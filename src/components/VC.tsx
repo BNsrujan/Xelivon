@@ -2,9 +2,9 @@ import React from 'react'
 
 function VC() {
   return (
-    <div>
-      
-    </div>
+    <section>
+      VC
+    </section>
   )
 }
 

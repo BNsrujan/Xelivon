@@ -2,9 +2,9 @@ import React from 'react'
 
 function Emply() {
   return (
-    <div>
-      
-    </div>
+    <section>
+      Emply
+    </section>
   )
 }
 
