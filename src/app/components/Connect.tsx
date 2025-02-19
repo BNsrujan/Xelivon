@@ -23,11 +23,12 @@ export default function Connect() {
           </p>
           <p className="mt-4  flex flex-col  space-x-2">
           For inquiries, support, or consultations, reach out to us at support@axearc.com. We're here to assist you!
+          </p>
           <div className=" flex gap-4  w-full ">
             <Mail target="_blank"
                 className="rounded-lg border-2  border-gray-400 hover:border-white duration-300" /> <span className="text-blue-600">support@axearc.com</span>
             </div>
-          </p>
+          
         </motion.div>
         </div>
         <div className='w-1/2'>
