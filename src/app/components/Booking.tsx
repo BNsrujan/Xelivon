@@ -2,7 +2,7 @@ import React from "react";
 
 const CALENDLY_URL =
   process.env.NEXT_PUBLIC_CALENDLY_URL ??
-  "https://calendly.com/pareshtalekar790899/30min";
+  "https://zcal.co/srujan-bn/60min";
 
 export default function Booking() {
   return (
@@ -16,7 +16,7 @@ export default function Booking() {
             Book a call
           </p>
           <h2 className="mt-3 text-3xl font-bold md:text-5xl">
-            Thirty minutes, no pitch deck
+            Sixty minutes, no pitch deck
           </h2>
           <p className="mt-4 text-lg text-gray-600">
             Bring the problem you are stuck on. You will leave with a point of
