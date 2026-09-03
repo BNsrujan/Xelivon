@@ -1,26 +1,39 @@
-import Herosection from "./components/Herosection";
-import Connect from "./components/Connect";
-import Project from "./components/Project";
-import { Vc } from "./components/Vc";
-import About from "./components/About";
-import Founder from "./components/Founder";
-import Blog from "./components/Blog";
-import Session from "./components/Session";
 import Navbar from "./components/Navbar";
-import Footer from "./components/Footer"
-export default function Home() {
+import Herosection from "./components/Herosection";
+import TrustedBy from "./components/TrustedBy";
+import Services from "./components/Services";
+import WhyAxearc from "./components/WhyAxearc";
+import About from "./components/About";
+import Insights from "./components/Insights";
+import Founder from "./components/Founder";
+import Booking from "./components/Booking";
+import Connect from "./components/Connect";
+import Footer from "./components/Footer";
+import { EnquiryProvider } from "@/components/enquiry-context";
+import { getPosts, getServices } from "@/lib/content";
+
+// Content lives in the database, so re-check it periodically rather than
+// baking the build-time snapshot in forever.
+export const revalidate = 300;
+
+export default async function Home() {
+  const [services, posts] = await Promise.all([getServices(), getPosts()]);
+
   return (
-    <div className=" relative p-4 flex  flex-col gap-7   ">
-       <Navbar/>
-      <Herosection/>
-      <Vc/>
-      <Project/>
-      <About/>
-      <Blog/>
-      <Founder/>
-      <Session/>
-      <Connect/>
-      <Footer/>
-    </div>
+    <EnquiryProvider>
+      <div className="relative flex flex-col gap-7 p-4">
+        <Navbar />
+        <Herosection />
+        <TrustedBy />
+        <Services services={services} />
+        <WhyAxearc />
+        <About />
+        <Insights posts={posts} />
+        <Founder />
+        <Booking />
+        <Connect services={services} />
+        <Footer />
+      </div>
+    </EnquiryProvider>
   );
 }

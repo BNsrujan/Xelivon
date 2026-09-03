@@ -1,74 +1,118 @@
 "use client";
-import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
+
+import React from "react";
+import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SparklesCore } from "@/components/ui/sparkles";
-import { motion } from "framer-motion";
-import React from "react";
+import { useEnquiry } from "@/components/enquiry-context";
 
-const words = `Discover innovation. Redefine the future. 
-`;
+const STATS = [
+  { value: "6", label: "practice areas under one roof" },
+  { value: "2 wks", label: "from first call to a costed roadmap" },
+  { value: "1", label: "senior lead who stays on your account" },
+];
 
 function Herosection() {
-  return (
-    <div className=" px-12 rounded-2xl bg-black text-white h-screen">
-      <div className=" h-96 relative">
-        <div className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-[2px] w-3/4 blur-sm" />
-        <div className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-px w-3/4" />
-        <div className="absolute inset-x-60 top-0 bg-gradient-to-r from-transparent via-sky-500 to-transparent h-[5px] w-1/4 blur-sm" />
-        <div className="absolute inset-x-60 top-0 bg-gradient-to-r from-transparent via-sky-500 to-transparent h-px w-1/4" />
+  const { startEnquiry } = useEnquiry();
 
+  const scrollToBooking = () => {
+    document
+      .getElementById("booking")
+      ?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  return (
+    <section
+      id="top"
+      className="relative overflow-hidden rounded-2xl bg-black px-6 py-20 text-white md:px-12 md:py-28"
+    >
+      <div className="absolute inset-x-20 top-0 h-[2px] w-3/4 bg-gradient-to-r from-transparent via-indigo-500 to-transparent blur-sm" />
+      <div className="absolute inset-x-20 top-0 h-px w-3/4 bg-gradient-to-r from-transparent via-indigo-500 to-transparent" />
+      <div className="absolute inset-x-60 top-0 h-[5px] w-1/4 bg-gradient-to-r from-transparent via-sky-500 to-transparent blur-sm" />
+      <div className="absolute inset-x-60 top-0 h-px w-1/4 bg-gradient-to-r from-transparent via-sky-500 to-transparent" />
+
+      <div className="pointer-events-none absolute inset-0 h-64">
         <SparklesCore
           background="transparent"
           minSize={0.4}
           maxSize={1}
-          particleDensity={1200}
-          className="w-full h-full"
+          particleDensity={800}
+          className="h-full w-full"
           particleColor="#FFFFFF"
         />
-
-        <div className="flex flex-col justify-center items-center">
-          <motion.h2
-            initial={{ opacity: 0, y: +20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="md:text-7xl py-3 text-3xl lg:text-6xl font-bold text-center text-white relative z-20"
-          >
-            AI-driven solutions powered by Axearc
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: +20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.7 }}
-            className="text-xl text-gray-400 text-center "
-          >
-            Marketing, business consulting, and automation designed to
-            revolutionize operations.
-            <br />
-            Tech-powered insights for data-driven performance and efficiency.
-          </motion.p>
-          <motion.div
-           initial={{ opacity: 0, y: +20 }}
-           animate={{ opacity: 1, y: 0 }}
-           transition={{ duration: 0.8, delay: 0.14 }}>
-          <Button className="m-4">Get Started with a Free Consultation</Button>
-          </motion.div>
-        </div>
-        <div className="flex md:pt-52 flex-col justify-center items-center">
-          <div className="md:text-7xl py-3 text-3xl lg:text-6xl font-bold text-center text-white relative z-20">
-            <TextGenerateEffect words={words} className="" />
-          </div>
-          <motion.p
-            initial={{ opacity: 0, y: +20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.7 }}
-            className="text-xl text-gray-400 text-center "
-          >
-          Axearc is a Business and Technology Consulting firm, driving growth through AI-powered solutions,
-            cutting-edge marketing, advanced web development, animation, and business automation.
-            </motion.p></div>
-        <div className="absolute inset-0 w-full h-full bg-black [mask-image:radial-gradient(360px_200px_at_top,transparent_20%,white)]"></div>
+        <div className="absolute inset-0 bg-black [mask-image:radial-gradient(360px_200px_at_top,transparent_20%,white)]" />
       </div>
-    </div>
+
+      <div className="relative z-20 mx-auto flex max-w-4xl flex-col items-center text-center">
+        <motion.span
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6 }}
+          className="mb-6 rounded-full border border-white/20 px-4 py-1 text-xs uppercase tracking-widest text-gray-300"
+        >
+          Business &amp; technology consulting
+        </motion.span>
+
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-4xl font-bold leading-tight md:text-6xl"
+        >
+          AI-driven solutions, delivered by people who stay accountable
+        </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="mt-6 max-w-2xl text-lg text-gray-400"
+        >
+          Axearc pairs strategy, marketing, and engineering into a single
+          engagement — so the plan, the build, and the numbers that prove it
+          worked all come from the same team.
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.35 }}
+          className="mt-10 flex flex-col gap-3 sm:flex-row"
+        >
+          <Button
+            size="lg"
+            onClick={scrollToBooking}
+            className="bg-white text-black hover:bg-gray-200"
+          >
+            Book a free consultation
+            <ArrowRight />
+          </Button>
+          <Button
+            size="lg"
+            variant="outline"
+            onClick={() => startEnquiry()}
+            className="border-white/30 bg-transparent text-white hover:bg-white/10 hover:text-white"
+          >
+            Tell us about your project
+          </Button>
+        </motion.div>
+
+        <motion.dl
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className="mt-16 grid w-full grid-cols-1 gap-8 border-t border-white/10 pt-10 sm:grid-cols-3"
+        >
+          {STATS.map((stat) => (
+            <div key={stat.label}>
+              <dt className="text-3xl font-bold">{stat.value}</dt>
+              <dd className="mt-1 text-sm text-gray-400">{stat.label}</dd>
+            </div>
+          ))}
+        </motion.dl>
+      </div>
+    </section>
   );
 }
 
